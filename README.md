@@ -1,8 +1,10 @@
 # Ubuntu Cloud Support Lab
 
-A hands-on portfolio of break/fix labs, a diagnostic tool, knowledge-base articles
-and mock support cases, built to practise the day-to-day work of a **Linux / cloud
-support engineer** on Ubuntu.
+A hands-on learning project focused on Ubuntu Linux troubleshooting, cloud infrastructure
+fundamentals, incident investigation, and technical support documentation.
+
+The goal is to develop practical skills relevant to Linux and cloud support engineering
+through reproducible labs and evidence-based troubleshooting.
 
 Every lab follows the same loop a real support engineer works through:
 
@@ -10,7 +12,31 @@ Every lab follows the same loop a real support engineer works through:
 Break it  →  Observe symptoms  →  Diagnose  →  Fix  →  Prevent  →  Write it up (KB + ticket reply)
 ```
 
-## Skills map (what this repo proves)
+## Objectives
+
+- Diagnose common Linux service and system failures.
+- Investigate problems using logs, system utilities, and configuration files.
+- Troubleshoot networking, containers, and storage.
+- Practise safe remediation and recovery verification.
+- Write reusable troubleshooting guides.
+- Develop professional technical support communication.
+- Automate selected diagnostic tasks.
+
+## Lab Methodology
+
+Each lab follows a consistent workflow:
+
+1. Reproduce a problem safely.
+2. Collect diagnostic evidence.
+3. Identify the root cause.
+4. Apply a corrective action.
+5. Verify recovery.
+6. Document the findings.
+7. Test cleanup and rollback.
+
+Only mark a lab complete after executing and verifying it.
+
+## Skills map
 
 | Domain | Weight | Typical job description phrase | Where to look |
 |---|---|---|---|
@@ -22,19 +48,34 @@ Break it  →  Observe symptoms  →  Diagnose  →  Fix  →  Prevent  →  Wri
 | Scripting & tooling | across all | "Automate data collection; Bash, testing, CI" | [tools/](tools) |
 | Customer communication | across all | "Write clear, empathetic technical responses" | [support-cases/](support-cases), [kb/](kb) |
 
-## Repository layout
+## Labs
+
+| Lab | Focus | Status |
+|---|---|---|
+| [01. Systemd service failure](labs/01-linux/01-systemd-failed-service) | Service management, logs, configuration troubleshooting | In progress |
+
+## Repository Structure
 
 ```
 environment/      Reproducible lab VMs (Multipass, LXD)
 labs/             Break/fix exercises, one folder per domain
 tools/            ubuntu-diag.sh (a lightweight sosreport) + bats tests
 kb/               Knowledge-base articles, one per completed lab
-support-cases/    Mock customer tickets and your written replies
+support-cases/    Simulated support incidents and written responses
 templates/        Copy these when you add a lab, KB article or case
 .github/          CI: shellcheck + bats on every push
 ```
 
-## Quick start
+- `labs/` — practical troubleshooting exercises.
+- `kb/` — reusable knowledge-base articles.
+- `support-cases/` — simulated support incidents.
+- `CLAUDE.md` — project-specific AI assistant instructions.
+
+## Environment
+
+The initial labs are designed for an Ubuntu virtual machine running in UTM on an Apple
+Silicon Mac. Some advanced virtualization and cloud exercises may require a separate Linux
+host or cloud environment.
 
 ```bash
 # 1. Install Multipass (macOS: brew install --cask multipass; Ubuntu: sudo snap install multipass)
@@ -65,10 +106,10 @@ Multi-node labs (networking, Ceph) use LXD; see [environment/lxd/profiles](envir
 
 ## Progress tracker
 
-Tick items off as you finish them. Recruiters do look at this.
+Tick items off as you finish them.
 
 - [ ] Environment working (Multipass + LXD)
-- [ ] 01-linux: 0 / 6 labs
+- [ ] 01-linux: 1 / 6 labs (lab 01 in progress)
 - [ ] 02-networking: 0 / 5 labs
 - [ ] 03-containers: 0 / 5 labs
 - [ ] 04-storage: 0 / 4 labs
@@ -78,8 +119,20 @@ Tick items off as you finish them. Recruiters do look at this.
 - [ ] 5+ support cases
 - [ ] CI is green
 
+## Scope and Limitations
+
+This is an educational portfolio, not a production support environment. Simulated incidents
+are explicitly labeled, and technical results are documented only after verification.
+
 ## Conventions
 
 - Each lab has its own `README.md` with **Scenario → Break → Symptoms → Diagnose → Fix → Prevent → References**.
+- Each lab also includes `CHECKLIST.md` (completion criteria) and `notes.md` (working journal).
 - Break steps are scripted (`break.sh`), so you can reset a lab and practise again without peeking at the fix.
 - Commands that change the system are run **inside the lab VM only**, never on your host.
+
+## Long-term roadmap
+
+Linux administration, networking, containers, storage, KVM/libvirt, introductory OpenStack
+troubleshooting, and diagnostic automation. The repository will grow incrementally as each
+lab is implemented, tested, and documented.
