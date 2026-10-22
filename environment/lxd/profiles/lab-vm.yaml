@@ -1,0 +1,14 @@
+# LXD profile for VM-type instances (for labs that need a real kernel:
+# kernel modules, mdadm, iSCSI). Launch with --vm.
+#   lxc launch ubuntu:24.04 vm1 --vm --profile default --profile lab-vm
+config:
+  limits.cpu: "2"
+  limits.memory: 2GiB
+  security.secureboot: "false"
+description: Ubuntu VM for kernel-level labs
+devices:
+  root:
+    path: /
+    pool: default
+    size: 15GiB
+    type: disk

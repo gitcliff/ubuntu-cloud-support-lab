@@ -1,0 +1,57 @@
+#cloud-config
+# Ubuntu 24.04 lab VM for ubuntu-cloud-support-lab.
+# Usage:
+#   multipass launch 24.04 --name lab --cpus 2 --memory 4G --disk 20G \
+#     --cloud-init environment/multipass/cloud-init.yaml
+hostname: lab
+timezone: UTC
+
+package_update: true
+package_upgrade: true
+packages:
+  # troubleshooting basics
+  - sysstat
+  - htop
+  - iotop
+  - strace
+  - lsof
+  - tree
+  - jq
+  # networking
+  - net-tools
+  - dnsutils
+  - tcpdump
+  - mtr-tiny
+  - nmap
+  - iperf3
+  - bridge-utils
+  # storage
+  - lvm2
+  - mdadm
+  - xfsprogs
+  - nfs-kernel-server
+  - nfs-common
+  # virtualization
+  - qemu-kvm
+  - libvirt-daemon-system
+  - libvirt-clients
+  - virtinst
+  - cloud-image-utils
+  # tooling
+  - shellcheck
+  - bats
+
+snap:
+  commands:
+    - [snap, install, lxd]
+    - [snap, install, microk8s, --classic]
+
+runcmd:
+  - [lxd, init, --auto]
+  - [usermod, -aG, "lxd,libvirt,microk8s", ubuntu]
+  # Spare loop "disks" for the storage labs (LVM, RAID)
+  - [mkdir, -p, /srv/disks]
+  - [bash, -c, "for i in 1 2 3 4; do truncate -s 1G /srv/disks/disk$i.img; done"]
+  - [systemctl, enable, --now, sysstat]
+
+final_message: "Lab VM ready after $UPTIME seconds. Run: multipass shell lab"

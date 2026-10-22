@@ -1,0 +1,11 @@
+# diag output
+ubuntu-diag-*/
+ubuntu-diag-*.tar.gz
+# terraform
+environment/terraform/.terraform/
+environment/terraform/*.tfstate*
+environment/terraform/*.tfvars
+# vm images
+*.img
+*.qcow2
+*.iso

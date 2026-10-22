@@ -1,0 +1,8 @@
+#cloud-config
+hostname: guest1
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAA...replace-with-your-public-key

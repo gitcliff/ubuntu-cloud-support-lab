@@ -1,0 +1,17 @@
+# LXD profile for multi-node labs (networking, Ceph, clustering).
+# Usage:
+#   lxc profile create lab-node
+#   lxc profile edit lab-node < environment/lxd/profiles/lab-node.yaml
+#   lxc launch ubuntu:24.04 node1 --profile default --profile lab-node
+config:
+  limits.cpu: "1"
+  limits.memory: 1GiB
+  cloud-init.user-data: |
+    #cloud-config
+    packages: [dnsutils, tcpdump, iperf3, mtr-tiny]
+description: Small Ubuntu node for multi-node support labs
+devices:
+  eth1:
+    name: eth1
+    network: labnet
+    type: nic
