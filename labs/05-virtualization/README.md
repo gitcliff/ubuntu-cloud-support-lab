@@ -7,6 +7,6 @@
 | 03 | Snapshot and roll back a broken VM | virsh snapshot-*, qcow2 backing files | ☐ |
 | 04 | Guest is slow | virtio drivers, CPU pinning, `virsh domstats` | ☐ |
 
-Note: Apple Silicon hosts can't nest KVM inside Multipass. Use the Terraform host or an x86 machine.
+Note: Apple Silicon hosts can't nest KVM inside Multipass. Use a native x86 machine.
 
 Core commands: `virsh`, `virt-install`, `qemu-img`, `kvm-ok`, `multipass`.

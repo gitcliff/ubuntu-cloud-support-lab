@@ -25,7 +25,7 @@ Break it  →  Observe symptoms  →  Diagnose  →  Fix  →  Prevent  →  Wri
 ## Repository layout
 
 ```
-environment/      Reproducible lab VMs (Multipass, LXD, optional Terraform cloud host)
+environment/      Reproducible lab VMs (Multipass, LXD)
 labs/             Break/fix exercises, one folder per domain
 tools/            ubuntu-diag.sh (a lightweight sosreport) + bats tests
 kb/               Knowledge-base articles, one per completed lab
@@ -49,8 +49,6 @@ sudo /home/ubuntu/lab/tools/ubuntu-diag.sh -o /tmp
 ```
 
 Multi-node labs (networking, Ceph) use LXD; see [environment/lxd/profiles](environment/lxd/profiles).
-Nested-virtualisation labs that need real KVM can use the optional cloud host in
-[environment/terraform](environment/terraform).
 
 ## Study plan (12 weeks, about 6–8 h a week)
 

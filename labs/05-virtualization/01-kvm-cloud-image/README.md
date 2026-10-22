@@ -5,7 +5,7 @@
 | Domain | virtualization |
 | Difficulty | ★★☆ |
 | Time | ~45 min |
-| Environment | x86 host with `/dev/kvm` (see environment/terraform on Apple Silicon) |
+| Environment | x86 host with `/dev/kvm` |
 
 This is a **build** lab, not a break/fix one: you need to know how the happy path
 works before you can support it.
