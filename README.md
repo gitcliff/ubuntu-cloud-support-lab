@@ -53,6 +53,7 @@ Only mark a lab complete after executing and verifying it.
 | Lab | Focus | Status |
 |---|---|---|
 | [01. Systemd service failure](labs/01-linux/01-systemd-failed-service) | Service management, logs, configuration troubleshooting | In progress |
+| [02. Disk full but df says space is free](labs/01-linux/02-disk-full-df-free) | Deleted-but-open files, lsof, inode exhaustion | Ready to run |
 
 ## Repository Structure
 
