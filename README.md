@@ -54,6 +54,7 @@ Only mark a lab complete after executing and verifying it.
 |---|---|---|
 | [01. Systemd service failure](labs/01-linux/01-systemd-failed-service) | Service management, logs, configuration troubleshooting | In progress |
 | [02. Disk full but df says space is free](labs/01-linux/02-disk-full-df-free) | Deleted-but-open files, lsof, inode exhaustion | Ready to run |
+| [03. Broken apt / dpkg state](labs/01-linux/03-broken-apt-dpkg) | dpkg --configure -a, stale locks, held packages | Ready to run |
 
 ## Repository Structure
 
